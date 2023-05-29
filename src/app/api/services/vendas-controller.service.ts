@@ -27,7 +27,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation obterPorId
    */
-  static readonly ObterPorIdPath = '/api/api/v1/vendas/{id}';
+  static readonly ObterPorIdPath = '/api/v1/vendas/{id}';
 
   /**
    * Obter os dados completos de uma venda pelo ID informado!
@@ -84,7 +84,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation alterar
    */
-  static readonly AlterarPath = '/api/api/v1/vendas/{id}';
+  static readonly AlterarPath = '/api/v1/vendas/{id}';
 
   /**
    * Metodo utilizado para alterar dados de uma venda
@@ -144,7 +144,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation remover
    */
-  static readonly RemoverPath = '/api/api/v1/vendas/{id}';
+  static readonly RemoverPath = '/api/v1/vendas/{id}';
 
   /**
    * Método utililzado para remover uma venda pelo ID
@@ -201,7 +201,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation incluir
    */
-  static readonly IncluirPath = '/api/api/v1/vendas';
+  static readonly IncluirPath = '/api/v1/vendas';
 
   /**
    * Método utilizado para realizar inclusão de vendas
@@ -224,8 +224,8 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
@@ -258,7 +258,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation pesquisar
    */
-  static readonly PesquisarPath = '/api/api/v1/vendas/pesquisar';
+  static readonly PesquisarPath = '/api/v1/vendas/pesquisar';
 
   /**
    * Busca uma venda pelos dados informados
@@ -315,7 +315,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation listAll
    */
-  static readonly ListAllPath = '/api/api/v1/vendas/listar';
+  static readonly ListAllPath = '/api/v1/vendas/listar';
 
   /**
    * Lista de Vendas
@@ -336,8 +336,8 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),

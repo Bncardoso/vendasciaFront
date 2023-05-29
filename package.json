@@ -1,5 +1,5 @@
 {
-  "name": "ueg-prog-webi-vendascia",
+  "name": "vendasciafront",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

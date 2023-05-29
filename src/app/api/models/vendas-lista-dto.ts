@@ -6,7 +6,7 @@ export interface VendasListaDto {
   id?: number;
   nomeCliente?: string;
   nomeProduto?: string;
-  qtdVenda?: string;
+  qtdVenda?: number;
   valorTotal?: number;
   valorUnidade?: number;
 }

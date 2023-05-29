@@ -10,12 +10,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8080 ",
+      "url": "http://localhost:8080",
       "description": "Generated server url"
     }
   ],
   "paths": {
-    "/api/api/v1/vendas/{id}": {
+    "/api/v1/vendas/{id}": {
       "get": {
         "tags": [
           "vendas-controller"
@@ -117,7 +117,7 @@
         }
       }
     },
-    "/api/api/v1/vendas": {
+    "/api/v1/vendas": {
       "post": {
         "tags": [
           "vendas-controller"
@@ -136,9 +136,9 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Venda Incluída",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/VendasDTO"
                 }
@@ -148,7 +148,7 @@
         }
       }
     },
-    "/api/api/v1/vendas/pesquisar": {
+    "/api/v1/vendas/pesquisar": {
       "post": {
         "tags": [
           "vendas-controller"
@@ -182,7 +182,7 @@
         }
       }
     },
-    "/api/api/v1/vendas/listar": {
+    "/api/v1/vendas/listar": {
       "get": {
         "tags": [
           "vendas-controller"
@@ -191,9 +191,9 @@
         "operationId": "listALL",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Listagem de vendas",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -254,6 +254,10 @@
             "type": "number",
             "format": "double"
           },
+          "valorTotal": {
+            "type": "number",
+            "format": "double"
+          },
           "nomeCliente": {
             "type": "string"
           },
@@ -278,7 +282,8 @@
             "type": "string"
           },
           "qtdVenda": {
-            "type": "string"
+            "type": "integer",
+            "format": "int32"
           },
           "valorUnidade": {
             "type": "number",

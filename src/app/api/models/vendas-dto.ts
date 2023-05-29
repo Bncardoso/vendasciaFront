@@ -7,5 +7,6 @@ export interface VendasDto {
   nomeCliente?: string;
   nomeProduto?: string;
   qtdVenda?: number;
+  valorTotal?: number;
   valorUnidade?: number;
 }
