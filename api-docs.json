@@ -1,0 +1,308 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Sistema de Gerenciamento de Vendas",
+    "license": {
+      "name": "Apache License 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080 ",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/api/v1/vendas/{id}": {
+      "get": {
+        "tags": [
+          "vendas-controller"
+        ],
+        "description": "Obter os dados completos de uma venda pelo ID informado!",
+        "operationId": "ObterPorId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendasDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vendas-controller"
+        ],
+        "description": "Metodo utilizado para alterar dados de uma venda",
+        "operationId": "alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendasDadosAlteravelDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendasDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vendas-controller"
+        ],
+        "description": "Método utililzado para remover uma venda pelo ID",
+        "operationId": "remover",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendasDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/api/v1/vendas": {
+      "post": {
+        "tags": [
+          "vendas-controller"
+        ],
+        "description": "Método utilizado para realizar inclusão de vendas",
+        "operationId": "incluir",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendasDadosAlteravelDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendasDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/api/v1/vendas/pesquisar": {
+      "post": {
+        "tags": [
+          "vendas-controller"
+        ],
+        "description": "Busca uma venda pelos dados informados",
+        "operationId": "pesquisar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendasDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VendasListaDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/api/v1/vendas/listar": {
+      "get": {
+        "tags": [
+          "vendas-controller"
+        ],
+        "description": "Lista de Vendas",
+        "operationId": "listALL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VendasListaDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VendasDadosAlteravelDTO": {
+        "type": "object",
+        "properties": {
+          "nomeProduto": {
+            "type": "string"
+          },
+          "qtdVenda": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "valorUnidade": {
+            "type": "number",
+            "format": "double"
+          },
+          "nomeCliente": {
+            "type": "string"
+          },
+          "contatoCliente": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "VendasDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dataEncomenda": {
+            "type": "string",
+            "format": "date"
+          },
+          "nomeProduto": {
+            "type": "string"
+          },
+          "qtdVenda": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "valorUnidade": {
+            "type": "number",
+            "format": "double"
+          },
+          "nomeCliente": {
+            "type": "string"
+          },
+          "contatoCliente": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "VendasListaDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dataEncomenda": {
+            "type": "string",
+            "format": "date"
+          },
+          "nomeProduto": {
+            "type": "string"
+          },
+          "qtdVenda": {
+            "type": "string"
+          },
+          "valorUnidade": {
+            "type": "number",
+            "format": "double"
+          },
+          "valorTotal": {
+            "type": "number",
+            "format": "double"
+          },
+          "nomeCliente": {
+            "type": "string"
+          },
+          "contatoCliente": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicScheme": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
