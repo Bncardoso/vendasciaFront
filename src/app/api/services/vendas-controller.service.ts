@@ -27,7 +27,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation obterPorId
    */
-  static readonly ObterPorIdPath = '/api/v1/vendas/{id}';
+  static readonly ObterPorIdPath = '/v1/vendas/{id}';
 
   /**
    * Obter venda pelo ID informado!
@@ -84,7 +84,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation alterar
    */
-  static readonly AlterarPath = '/api/v1/vendas/{id}';
+  static readonly AlterarPath = '/v1/vendas/{id}';
 
   /**
    * Metodo utilizado para alterar dados de uma venda
@@ -144,7 +144,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation remover
    */
-  static readonly RemoverPath = '/api/v1/vendas/{id}';
+  static readonly RemoverPath = '/v1/vendas/{id}';
 
   /**
    * Método utililzado para remover uma venda pelo ID
@@ -201,10 +201,10 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation listAll
    */
-  static readonly ListAllPath = '/api/v1/vendas';
+  static readonly ListAllPath = '/v1/vendas';
 
   /**
-   * Lista de Vendas
+   * Listagem geral de Vendas
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `listAll()` instead.
@@ -234,7 +234,7 @@ export class VendasControllerService extends BaseService {
   }
 
   /**
-   * Lista de Vendas
+   * Listagem geral de Vendas
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `listAll$Response()` instead.
@@ -255,7 +255,7 @@ export class VendasControllerService extends BaseService {
   /**
    * Path part for operation incluir
    */
-  static readonly IncluirPath = '/api/v1/vendas';
+  static readonly IncluirPath = '/v1/vendas';
 
   /**
    * Método utilizado para realizar inclusão de vendas
@@ -310,26 +310,26 @@ export class VendasControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation pesquisarPorNomeCliente
+   * Path part for operation localizarPorNomeCliente
    */
-  static readonly PesquisarPorNomeClientePath = '/api/v1/vendas/cliente/{nomeCliente}';
+  static readonly LocalizarPorNomeClientePath = '/v1/vendas/cliente/{nomeCliente}';
 
   /**
    * Busca vendas pelo nome do cliente informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `pesquisarPorNomeCliente()` instead.
+   * To access only the response body, use `localizarPorNomeCliente()` instead.
    *
    * This method doesn't expect any request body.
    */
-  pesquisarPorNomeCliente$Response(params: {
+  localizarPorNomeCliente$Response(params: {
     nomeCliente: string;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<Array<VendasListaDto>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, VendasControllerService.PesquisarPorNomeClientePath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, VendasControllerService.LocalizarPorNomeClientePath, 'get');
     if (params) {
       rb.path('nomeCliente', params.nomeCliente, {});
     }
@@ -350,18 +350,18 @@ export class VendasControllerService extends BaseService {
    * Busca vendas pelo nome do cliente informado
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `pesquisarPorNomeCliente$Response()` instead.
+   * To access the full response (for headers, for example), `localizarPorNomeCliente$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  pesquisarPorNomeCliente(params: {
+  localizarPorNomeCliente(params: {
     nomeCliente: string;
   },
   context?: HttpContext
 
 ): Observable<Array<VendasListaDto>> {
 
-    return this.pesquisarPorNomeCliente$Response(params,context).pipe(
+    return this.localizarPorNomeCliente$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<VendasListaDto>>) => r.body as Array<VendasListaDto>)
     );
   }

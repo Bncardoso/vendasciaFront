@@ -15,6 +15,10 @@ export class ListVendasComponent implements OnInit{
   constructor(public vendasService: VendasControllerService) {
   }
   ngOnInit(): void {
+    this.buscarDados();
+  }
+
+  private buscarDados() {
     this.vendasService.listAll().subscribe(data => {
       this.vendasListaDataSource.data = data;
       console.log(data);

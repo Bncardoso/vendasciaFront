@@ -15,7 +15,7 @@
     }
   ],
   "paths": {
-    "/api/v1/vendas/{id}": {
+    "/v1/vendas/{id}": {
       "get": {
         "tags": [
           "vendas-controller"
@@ -117,12 +117,12 @@
         }
       }
     },
-    "/api/v1/vendas": {
+    "/v1/vendas": {
       "get": {
         "tags": [
           "vendas-controller"
         ],
-        "description": "Lista de Vendas",
+        "description": "Listagem geral de Vendas",
         "operationId": "listAll",
         "responses": {
           "200": {
@@ -170,13 +170,13 @@
         }
       }
     },
-    "/api/v1/vendas/cliente/{nomeCliente}": {
+    "/v1/vendas/cliente/{nomeCliente}": {
       "get": {
         "tags": [
           "vendas-controller"
         ],
         "description": "Busca vendas pelo nome do cliente informado",
-        "operationId": "pesquisarPorNomeCliente",
+        "operationId": "localizarPorNomeCliente",
         "parameters": [
           {
             "name": "nomeCliente",
