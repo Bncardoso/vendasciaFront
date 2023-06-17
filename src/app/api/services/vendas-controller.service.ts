@@ -11,7 +11,6 @@ import { map, filter } from 'rxjs/operators';
 
 import { VendasDto } from '../models/vendas-dto';
 import { VendasDadosAlteravelDto } from '../models/vendas-dados-alteravel-dto';
-import { VendasListaDto } from '../models/vendas-lista-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +41,7 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendasDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendasControllerService.ObterPorIdPath, 'get');
     if (params) {
@@ -50,13 +49,13 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendasDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -74,10 +73,10 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendasDto> {
+): Observable<any> {
 
     return this.obterPorId$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendasDto>) => r.body as VendasDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -100,7 +99,7 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendasDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendasControllerService.AlterarPath, 'put');
     if (params) {
@@ -109,13 +108,13 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendasDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -134,10 +133,10 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendasDto> {
+): Observable<any> {
 
     return this.alterar$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendasDto>) => r.body as VendasDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -159,7 +158,7 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendasDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendasControllerService.RemoverPath, 'delete');
     if (params) {
@@ -167,13 +166,13 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendasDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -191,10 +190,10 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendasDto> {
+): Observable<any> {
 
     return this.remover$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendasDto>) => r.body as VendasDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -215,20 +214,20 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<VendasListaDto>>> {
+): Observable<StrictHttpResponse<Array<VendasDto>>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendasControllerService.ListAllPath, 'get');
     if (params) {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<VendasListaDto>>;
+        return r as StrictHttpResponse<Array<VendasDto>>;
       })
     );
   }
@@ -245,10 +244,10 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<Array<VendasListaDto>> {
+): Observable<Array<VendasDto>> {
 
     return this.listAll$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<VendasListaDto>>) => r.body as Array<VendasListaDto>)
+      map((r: StrictHttpResponse<Array<VendasDto>>) => r.body as Array<VendasDto>)
     );
   }
 
@@ -270,7 +269,7 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<VendasDto>> {
+): Observable<StrictHttpResponse<Array<VendasDto>>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendasControllerService.IncluirPath, 'post');
     if (params) {
@@ -278,13 +277,13 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<VendasDto>;
+        return r as StrictHttpResponse<Array<VendasDto>>;
       })
     );
   }
@@ -302,10 +301,10 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<VendasDto> {
+): Observable<Array<VendasDto>> {
 
     return this.incluir$Response(params,context).pipe(
-      map((r: StrictHttpResponse<VendasDto>) => r.body as VendasDto)
+      map((r: StrictHttpResponse<Array<VendasDto>>) => r.body as Array<VendasDto>)
     );
   }
 
@@ -327,7 +326,7 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<VendasListaDto>>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, VendasControllerService.LocalizarPorNomeClientePath, 'get');
     if (params) {
@@ -335,13 +334,13 @@ export class VendasControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<VendasListaDto>>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -359,10 +358,10 @@ export class VendasControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<Array<VendasListaDto>> {
+): Observable<any> {
 
     return this.localizarPorNomeCliente$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<VendasListaDto>>) => r.body as Array<VendasListaDto>)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 

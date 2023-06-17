@@ -1,0 +1,55 @@
+<form
+
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit()"
+  class="form"
+>
+  <div class="formTipo">
+  <mat-form-field >
+    <mat-label>Cliente</mat-label>
+    <input matInput formControlName="nomeCliente">
+    <mat-error *ngIf="handleError('nomeCliente', 'required')">
+      Nome no cliente é obrigatório!
+    </mat-error>
+    <mat-error *ngIf="handleError('nomeCliente', 'minLength')">
+      Tamanho minimo são três caracteres
+    </mat-error>
+    <mat-error *ngIf="handleError('nomeCliente', 'maxLength')">
+      Tamanho máximo atingido: 15 caracteres
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field  >
+    <mat-label>Contato</mat-label>
+    <input matInput formControlName="contatoCliente">
+  </mat-form-field>
+  <mat-form-field  >
+    <mat-label>Produto</mat-label>
+    <input matInput formControlName="nomeProduto">
+  </mat-form-field>
+  <mat-form-field  >
+    <mat-label>Quantidade</mat-label>
+    <input matInput formControlName="qtdVenda">
+  </mat-form-field>
+  <mat-form-field  >
+    <mat-label>Valor Unidade</mat-label>
+    <input matInput formControlName="valorUnidade">
+  </mat-form-field>
+  <button mat-raised-button class="menu-button" type="submit">
+    <mat-icon>save</mat-icon>
+    <span>Salvar</span>
+  </button>
+    </div>
+</form>
+<!--
+<mat-form-field>
+  <mat-label>Status</mat-label>
+  <mat-select>
+    <mat-option value="PENDENTE">PENDENTE</mat-option>
+    <mat-option value="FINALIZADO">FINALIZADO</mat-option>
+    <mat-option value="ENTREGUE">ENTREGUE</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Textarea</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>-->

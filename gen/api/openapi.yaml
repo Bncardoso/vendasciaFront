@@ -1,0 +1,263 @@
+openapi: 3.0.1
+info:
+  license:
+    name: Apache License 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  title: Sistema de Gerenciamento de Vendas
+  version: v1
+servers:
+- description: Generated server url
+  url: http://localhost:8080
+paths:
+  /v1/vendas/{id}:
+    delete:
+      description: Método utililzado para remover uma venda pelo ID
+      operationId: remover
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VendasDTO'
+          description: OK
+      tags:
+      - vendas-controller
+      x-accepts: '*/*'
+    get:
+      description: Obter venda pelo ID informado!
+      operationId: ObterPorId
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VendasDTO'
+          description: OK
+      tags:
+      - vendas-controller
+      x-accepts: '*/*'
+    put:
+      description: Metodo utilizado para alterar dados de uma venda
+      operationId: alterar
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VendasDadosAlteravelDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VendasDTO'
+          description: OK
+      tags:
+      - vendas-controller
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /v1/vendas:
+    get:
+      description: Listagem geral de Vendas
+      operationId: listAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/VendasListaDTO'
+                type: array
+          description: OK
+      tags:
+      - vendas-controller
+      x-accepts: '*/*'
+    post:
+      description: Método utilizado para realizar inclusão de vendas
+      operationId: incluir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VendasDadosAlteravelDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VendasDTO'
+          description: OK
+      tags:
+      - vendas-controller
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /v1/vendas/cliente/{nomeCliente}:
+    get:
+      description: Busca vendas pelo nome do cliente informado
+      operationId: localizarPorNomeCliente
+      parameters:
+      - explode: false
+        in: path
+        name: nomeCliente
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/VendasListaDTO'
+                type: array
+          description: OK
+      tags:
+      - vendas-controller
+      x-accepts: '*/*'
+components:
+  schemas:
+    VendasDadosAlteravelDTO:
+      example:
+        statusEncomenda: FINALIZADO
+        contatoCliente: 1
+        nomeCliente: nomeCliente
+        qtdVenda: 0
+        nomeProduto: nomeProduto
+        valorUnidade: 6.027456183070403
+      properties:
+        nomeProduto:
+          type: string
+        qtdVenda:
+          format: int32
+          type: integer
+        valorUnidade:
+          format: double
+          type: number
+        nomeCliente:
+          type: string
+        contatoCliente:
+          format: int64
+          type: integer
+        statusEncomenda:
+          enum:
+          - FINALIZADO
+          - ENTREGUE
+          - PENDENTE
+          type: string
+      type: object
+    VendasDTO:
+      example:
+        statusEncomenda: FINALIZADO
+        valorTotal: 6.027456183070403
+        contatoCliente: 5
+        id: 0
+        nomeCliente: nomeCliente
+        dataEncomenda: 2000-01-23
+        qtdVenda: 1
+        nomeProduto: nomeProduto
+        valorUnidade: 5.962133916683182
+      properties:
+        id:
+          format: int64
+          type: integer
+        dataEncomenda:
+          format: date
+          type: string
+        valorTotal:
+          format: double
+          type: number
+        nomeProduto:
+          type: string
+        qtdVenda:
+          format: int32
+          type: integer
+        valorUnidade:
+          format: double
+          type: number
+        nomeCliente:
+          type: string
+        contatoCliente:
+          format: int64
+          type: integer
+        statusEncomenda:
+          enum:
+          - FINALIZADO
+          - ENTREGUE
+          - PENDENTE
+          type: string
+      type: object
+    VendasListaDTO:
+      example:
+        statusEncomenda: FINALIZADO
+        valorTotal: 5.962133916683182
+        contatoCliente: 5
+        id: 0
+        nomeCliente: nomeCliente
+        dataEncomenda: 2000-01-23
+        qtdVenda: 6
+        nomeProduto: nomeProduto
+        valorUnidade: 1.4658129805029452
+      properties:
+        id:
+          format: int64
+          type: integer
+        dataEncomenda:
+          format: date
+          type: string
+        nomeProduto:
+          type: string
+        qtdVenda:
+          format: int32
+          type: integer
+        valorUnidade:
+          format: double
+          type: number
+        valorTotal:
+          format: double
+          type: number
+        nomeCliente:
+          type: string
+        contatoCliente:
+          format: int64
+          type: integer
+        statusEncomenda:
+          enum:
+          - FINALIZADO
+          - ENTREGUE
+          - PENDENTE
+          type: string
+      type: object
+  securitySchemes:
+    basicScheme:
+      scheme: basic
+      type: http
+

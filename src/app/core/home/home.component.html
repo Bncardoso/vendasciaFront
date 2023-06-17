@@ -8,11 +8,11 @@
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
 
-  <button mat-button class="menu-button" routerLink="/home">
+  <button mat-button class="menu-button" routerLink="/">
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </button>
-  <button mat-button class="menu-button" routerLink="/home/vendas">
+  <button mat-button class="menu-button" routerLink="/vendas">
     <mat-icon>person</mat-icon>
     <span>Vendas</span>
   </button>
@@ -23,21 +23,21 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" >
     <img
       class="avatar mat-elevation-z8"
-      ngSrc="../../../assets/iconPerfil.png" alt="iconPerfil" height="751" width="754">
+      ngSrc="../../../assets/iconPerfil.png" alt="iconPerfil" height="751" width="754" >
 
     <h4 class="name">Amor & Artesanato</h4>
     <p class="designation">Amar também é uma arte!</p>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/home">
+    <button mat-button class="menu-button"href="https://www.instagram.com/" target="_blank">
       <mat-icon>account_box</mat-icon>
       <span>Instagram</span>
     </button>
-    <button mat-button class="menu-button" routerLink="/profile">
+    <button mat-button class="menu-button" href="https://www.instagram.com/" target="_blank">
       <mat-icon>phone</mat-icon>
       <span>WhatsApp</span>
     </button>
