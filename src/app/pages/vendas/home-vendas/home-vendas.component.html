@@ -1,15 +1,11 @@
 <mat-card class="content">
   <mat-card-header>
     <mat-card-title>
-      Manter Venda
+      <mat-card-actions>
+
+      </mat-card-actions>
     </mat-card-title>
   </mat-card-header>
-    <mat-card-actions>
-      <button mat-raised-button class="menu-button" [routerLink]="['/vendas','new']">
-        <mat-icon>add</mat-icon>
-        <span>Adicionar</span>
-      </button>
-    </mat-card-actions>
     <mat-card-content>
       <router-outlet></router-outlet>
     </mat-card-content>

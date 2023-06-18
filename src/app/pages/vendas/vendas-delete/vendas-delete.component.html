@@ -1,0 +1,82 @@
+<mat-card-header>
+  <mat-card-title>
+    Exclusão de vendas
+  </mat-card-title>
+</mat-card-header>
+<mat-card-actions>
+  <button mat-raised-button class="menu-button" (click)="excluirItensSelecionados()">
+    <mat-icon>delete</mat-icon>
+    <span>Excluir</span>
+  </button>
+</mat-card-actions>
+
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <table mat-table [dataSource]="vendasListaDataSource">
+    <!-- Checkbox Column --><!-- Checkbox Column -->
+    <ng-container matColumnDef="selecionado">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="selecionarTodos($event)"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox [(ngModel)]="element.selecionado" (change)="selecionarLinha($event, element)"></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nomeCliente">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nomeCliente }} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="contatoCliente">
+      <th mat-header-cell *matHeaderCellDef> Telefone </th>
+      <td mat-cell *matCellDef="let element"> {{ element.contatoCliente }} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nomeProduto">
+      <th mat-header-cell *matHeaderCellDef> Produto </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nomeProduto }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="qtdVenda">
+      <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+      <td mat-cell *matCellDef="let element"> {{ element.qtdVenda }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="dataEncomenda">
+      <th mat-header-cell *matHeaderCellDef> Data Enc. </th>
+      <td mat-box *matCellDef="let element"> {{ element.dataEncomenda }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="valorUnidade">
+      <th mat-header-cell *matHeaderCellDef> Valor un. </th>
+      <td mat-cell *matCellDef="let element"> {{ element.valorUnidade }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="valorTotal">
+      <th mat-header-cell *matHeaderCellDef> Total </th>
+      <td mat-cell *matCellDef="let element"> {{ element.valorTotal }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="statusEncomenda">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{ element.statusEncomenda }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasMostrar"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasMostrar"></tr>
+  </table>
+</section>

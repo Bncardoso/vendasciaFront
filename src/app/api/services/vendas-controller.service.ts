@@ -185,12 +185,9 @@ export class VendasControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  remover(params: {
-    id: number;
-  },
-  context?: HttpContext
-
-): Observable<any> {
+  remover(params: { id: number },
+          context?: HttpContext
+  ): Observable<any> {
 
     return this.remover$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)

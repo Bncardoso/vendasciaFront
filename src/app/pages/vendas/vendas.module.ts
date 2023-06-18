@@ -13,13 +13,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import { FormVendasComponent } from './form-vendas/form-vendas.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { VendasDeleteComponent } from './vendas-delete/vendas-delete.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+
 
 @NgModule({
   declarations: [
     ListVendasComponent,
     HomeVendasComponent,
     FormVendasComponent,
+    VendasDeleteComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    FormsModule,
+
   ]
 })
 export class VendasModule { }

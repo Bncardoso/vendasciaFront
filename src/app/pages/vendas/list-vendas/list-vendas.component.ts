@@ -12,9 +12,17 @@ export class ListVendasComponent implements OnInit{
   colunasMostrar = ['id','nomeCliente','contatoCliente','nomeProduto','qtdVenda','dataEncomenda', 'statusEncomenda','valorUnidade','valorTotal']
   vendasListaDataSource : MatTableDataSource<VendasDto> = new MatTableDataSource<VendasDto>([]);
 
-  constructor(public vendasService: VendasControllerService) {
+  constructor(
+    public vendasService: VendasControllerService,
+    // private dialog: MatDialog,
+    // private snackBar: MatSnackBar
+  ) {
   }
   ngOnInit(): void {
+      this.buscarDados();
+    }
+
+  private buscarDados() {
     this.vendasService.listAll().subscribe(data => {
       this.vendasListaDataSource.data = data;
       console.log(data);
