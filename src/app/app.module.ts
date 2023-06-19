@@ -14,11 +14,15 @@ import { MatDividerModule } from '@angular/material/divider';
 import {VendasModule} from "./pages/vendas/vendas.module";
 import {NgOptimizedImage} from "@angular/common";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import {ConfirmationDialog} from "./core/confirmation-dialog/confirmation-dialog.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ConfirmationDialog
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
     MatIconModule,
     MatDividerModule,
     VendasModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

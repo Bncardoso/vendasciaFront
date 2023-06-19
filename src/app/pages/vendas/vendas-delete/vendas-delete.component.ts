@@ -1,7 +1,13 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { VendasDto } from '../../../api/models/vendas-dto';
-import { VendasControllerService } from '../../../api/services/vendas-controller.service';
+import {Component} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {VendasDto} from '../../../api/models/vendas-dto';
+import {VendasControllerService} from '../../../api/services/vendas-controller.service';
+import {MatDialog} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {
+  ConfirmationDialog,
+  ConfirmationDialogResult
+} from "../../../core/confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-vendas-delete',
@@ -13,7 +19,12 @@ export class VendasDeleteComponent {
   vendasListaDataSource: MatTableDataSource<VendasDto> = new MatTableDataSource<VendasDto>([]);
   idsSelecionados: number[] = [];
 
-  constructor(public vendasService: VendasControllerService) {}
+  constructor(
+    public vendasService: VendasControllerService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
+  }
 
   ngOnInit(): void {
     this.buscarDados();
@@ -49,7 +60,7 @@ export class VendasDeleteComponent {
 
   excluirItensSelecionados() {
     if (this.idsSelecionados.length === 0) {
-      console.log('Nenhum item selecionado.');
+      this.showMensagemSimples('Nenhum item selecionado.');
       return;
     }
 
@@ -63,14 +74,47 @@ export class VendasDeleteComponent {
   }
 
   remover(id: number) {
-    this.vendasService.remover({ id }).subscribe(
+    this.vendasService.remover({id}).subscribe(
       (response) => {
-        console.log('Item excluído com sucesso!');
+        this.showMensagemSimples('Item excluído com sucesso!');
         this.buscarDados();
       },
-      (error) => {
-        console.error('Erro ao excluir o item:', error);
+    (error) => {
+
+        if (error.status === 404) {
+          this.showMensagemSimples('Venda inexistente', error);
+        } else {
+          this.showMensagemSimples('Erro ao excluir o item:', error);
+          console.log("Erro:",error);
+        }
       }
     );
+  }
+
+  confirmarExcluir() {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      data: {
+        titulo: 'Atenção',
+        mensagem: `Confirmar a exclusão dos itens?`,
+        textoBotoes: {
+          ok: 'Sim',
+          cancel: 'Cancelar',
+        },
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: ConfirmationDialogResult) => {
+      if (confirmed?.resultado) {
+        this.excluirItensSelecionados();
+      }
+    });
+  }
+
+  showMensagemSimples(mensagem: string, duracao: number = 2000) {
+    this.snackBar.open(mensagem, 'Fechar', {
+      duration: duracao,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 }
