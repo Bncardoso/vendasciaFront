@@ -8,6 +8,7 @@ import {
 } from "../../../core/confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-vendas',
@@ -19,6 +20,7 @@ export class FormVendasComponent {
   formGroup!: FormGroup;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     public vendasService: VendasControllerService,
     private dialog: MatDialog,
@@ -44,7 +46,7 @@ export class FormVendasComponent {
         .subscribe(retorno => {
           console.log("Retorno: ", retorno);
           this.confirmarIncluir();
-
+          this.router.navigate(["/vendas"]);
         }, erro => {
           console.log("Erro: " + erro);
           this.showMensagemSimples("Digita direito!");
