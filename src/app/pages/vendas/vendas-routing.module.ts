@@ -22,6 +22,10 @@ export const vendasRoutes: Routes = [
       {
         path: "excluir",
         component: VendasDeleteComponent,
+      },
+      {
+        path: ":id",
+        component: FormVendasComponent,
       }
     ]
   }
