@@ -2,6 +2,56 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  align-items: center;
+  margin-top: 30px;
+
+}
+
+.content {
+  height: calc(100vh - 130px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-top: 5px;
+  margin-left: 25px;
+  background: #edebdf;
+  padding: 16px;
+  overflow: auto;
+}
+.mat-mdc-form-field {
+  --mat-mdc-form-field-floating-label-scale: 0.75;
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: left;
+  background: #ecebde;
+}
+.example-container {
+  max-width: 100%;
+  overflow: auto;
+}
+.mat-mdc-card-title {
+  margin-top: -30px;
+  color: #a35937;
+  font-size: 2cm;
+  font-family: ARTMAR, sans-serif;
+  align-items: center;
+
+}
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #ff0000;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #d2b56e;
 }
 
 

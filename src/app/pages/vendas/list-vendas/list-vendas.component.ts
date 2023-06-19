@@ -9,7 +9,7 @@ import {VendasControllerService} from "../../../api/services/vendas-controller.s
   styleUrls: ['./list-vendas.component.scss']
 })
 export class ListVendasComponent implements OnInit{
-  colunasMostrar = ['id','nomeCliente','contatoCliente','nomeProduto','qtdVenda','dataEncomenda', 'statusEncomenda','valorUnidade','valorTotal']
+  colunasMostrar = ['id','nomeCliente','contatoCliente','nomeProduto','qtdVenda','dataEncomenda', 'statusEncomenda','valorUnidade','valorTotal','acao']
   vendasListaDataSource : MatTableDataSource<VendasDto> = new MatTableDataSource<VendasDto>([]);
 
   constructor(
