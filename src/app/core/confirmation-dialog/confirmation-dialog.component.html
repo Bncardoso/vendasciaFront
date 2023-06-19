@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>
+  {{titulo}}
+</h1>
+<mat-dialog-content>
+  <p>
+    {{mensagem}}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button *ngIf="showOkButton"
+          mat-raised-button
+          (click)="onConfirmClick()"
+          tabindex="-1">{{textoBotaoOk}}</button>
+  <button *ngIf="showCancelButton"
+          mat-raised-button
+          mat-dialog-close
+          tabindex="-1"
+          cdkFocusInitial>{{textoBotaoCancelar}}</button>
+</mat-dialog-actions>
