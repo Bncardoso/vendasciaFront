@@ -5,6 +5,8 @@ import {ListVendasComponent} from "./list-vendas/list-vendas.component";
 import {HomeComponent} from "../../core/home/home.component";
 import {FormVendasComponent} from "./form-vendas/form-vendas.component";
 import {VendasDeleteComponent} from "./vendas-delete/vendas-delete.component";
+import {EstatisticaVendasComponent} from "./estatistica-vendas/estatistica-vendas.component";
+import {AboutVendasComponent} from "./about-vendas/about-vendas.component";
 
 export const vendasRoutes: Routes = [
   {
@@ -28,6 +30,18 @@ export const vendasRoutes: Routes = [
         component: FormVendasComponent,
       }
     ]
+  },
+  {
+    path: "estatistica",
+    component: EstatisticaVendasComponent,
+  },
+  {
+    path: "about",
+    component: AboutVendasComponent,
+  },
+  {
+    path: "home",
+    component: HomeVendasComponent,
   }
 ];
 

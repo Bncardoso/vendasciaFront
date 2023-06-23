@@ -17,12 +17,17 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import {ConfirmationDialog} from "./core/confirmation-dialog/confirmation-dialog.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-
+import {EstatisticaVendasComponent} from "./pages/vendas/estatistica-vendas/estatistica-vendas.component";
+ import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+import {MatTabsModule} from "@angular/material/tabs";
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ConfirmationDialog
+    ConfirmationDialog,
+    EstatisticaVendasComponent,
+    CanvasJSChart
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     VendasModule,
     NgOptimizedImage,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

@@ -95,7 +95,7 @@ export class VendasDeleteComponent {
     const dialogRef = this.dialog.open(ConfirmationDialog, {
       data: {
         titulo: 'Atenção',
-        mensagem: `Confirmar a exclusão dos itens?`,
+        mensagem: `Confirmar a exclusão dos itens?(${this.idsSelecionados})`,
         textoBotoes: {
           ok: 'Sim',
           cancel: 'Cancelar',

@@ -16,7 +16,8 @@ import { FormVendasComponent } from './form-vendas/form-vendas.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { VendasDeleteComponent } from './vendas-delete/vendas-delete.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-
+import {NgChartsModule} from "ng2-charts";
+import { AboutVendasComponent } from './about-vendas/about-vendas.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     HomeVendasComponent,
     FormVendasComponent,
     VendasDeleteComponent,
+    AboutVendasComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ReactiveFormsModule,
     MatCheckboxModule,
     FormsModule,
+    NgChartsModule,
 
   ]
 })

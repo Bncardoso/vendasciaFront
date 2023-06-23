@@ -1,0 +1,41 @@
+<!--<div [@.disabled]="true">-->
+<!--  <mat-tab-group dynamicHeight>-->
+<!--    <mat-tab label="Pedidos">-->
+<!--      <ng-template matTabContent>-->
+<!--        <canvasjs-chart-->
+<!--          [options]="columnChartOptions"-->
+<!--          [styles]="{ width: '100%', height: '360px' }"-->
+<!--        ></canvasjs-chart>-->
+<!--      </ng-template>-->
+<!--    </mat-tab>-->
+<!--  </mat-tab-group>-->
+<!--</div>-->
+<!--</div>-->
+<div class="teste" [@.disabled]="true">
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Pedidos">
+      <ng-template matTabContent>
+        <canvasjs-chart
+          [options]="columnChartOptions"
+          [styles]="{ width: '100%', height: '360px' }"
+        ></canvasjs-chart>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Mais pedidos">
+      <ng-template matTabContent>
+        <canvasjs-chart
+          [options]="pieChartOptions"
+          [styles]="{ width: '100%', height: '360px' }"
+        ></canvasjs-chart>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Lucro Total">
+      <ng-template matTabContent>
+        <canvasjs-chart
+          [options]="lineChartOptions"
+          [styles]="{ width: '100%', height: '360px' }"
+        ></canvasjs-chart>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -8,7 +8,7 @@
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
 
-  <button mat-button class="menu-button" routerLink="/">
+  <button mat-button class="menu-button" routerLink="/home">
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </button>
@@ -16,9 +16,9 @@
     <mat-icon>person</mat-icon>
     <span>Vendas</span>
   </button>
-  <button mat-button class="menu-button" routerLink="/about">
+  <button mat-button class="menu-button" routerLink="/estatistica">
     <mat-icon>info</mat-icon>
-    <span>About</span>
+    <span>Estatistica</span>
   </button>
 </mat-toolbar>
 
@@ -33,21 +33,20 @@
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" type="submit" href="https://www.instagram.com/" target="_blank" >
+    <a mat-button class="menu-button" href="https://www.instagram.com/_amor_e_artesanato_/" target="_blank">
       <mat-icon>account_box</mat-icon>
       <span>Instagram</span>
-    </button>
-    <button mat-button class="menu-button" href="https://www.instagram.com/" target="_blank">
+    </a>
+    <a mat-button class="menu-button" href="https://web.whatsapp.com/" target="_blank">
       <mat-icon>phone</mat-icon>
       <span>WhatsApp</span>
-    </button>
+    </a>
     <button mat-button class="menu-button" routerLink="/about">
       <mat-icon>info</mat-icon>
       <span>About</span>
     </button>
 
     <mat-divider></mat-divider>
-
     <button mat-button class="menu-button" routerLink="/help">
       <mat-icon>help</mat-icon>
       <span></span>
@@ -56,6 +55,9 @@
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
       <router-outlet></router-outlet>
+
+
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
